@@ -19,3 +19,4 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: canary
+      - run: deno eval "console.log(Deno.env.toObject())"
