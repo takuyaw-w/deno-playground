@@ -2,7 +2,9 @@
   
 name: Node CI
 
-on: push
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -16,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: ${{matrix.os}} Setup Deno
-      - uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v1
         with:
           deno-version: canary
       - run: deno eval "console.log(Deno.env.toObject())"
