@@ -1,0 +1,20 @@
+
+  
+name: Node CI
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macOS-10.14, windows-2016, ubuntu-18.04]
+
+    steps:
+      - uses: actions/checkout@master
+      - name: ${{matrix.os}} Setup Deno
+        uses: denolib/setup-deno@v1.1.0
+      - run: deno eval "console.log(Deno.env.toObject())"
